@@ -6,12 +6,12 @@ public class Rarity : SaveableObject {
 
     public string description = "";
 
-    private void Start()
-    {
-        // This is testcode to test the id system and file system
-        SaveObject();
-        LoadObject();
-    }
+    //private void Start()
+    //{
+    //    // This is testcode to test the id system and file system
+    //    SaveObject();
+    //    LoadObject();
+    //}
 
     private void Awake()
     {
