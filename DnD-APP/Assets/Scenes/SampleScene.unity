@@ -264,8 +264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1409152069}
-  - component: {fileID: 1409152068}
-  - component: {fileID: 1409152070}
+  - component: {fileID: 1409152071}
   m_Layer: 0
   m_Name: Rarity
   m_TagString: Untagged
@@ -273,19 +272,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1409152068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1409152067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59d34a58acc8863448188659eba88ff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Common
-  description: It's just very very common
 --- !u!4 &1409152069
 Transform:
   m_ObjectHideFlags: 0
@@ -299,7 +285,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1409152070
+--- !u!114 &1409152071
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,8 +293,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1409152067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59d34a58acc8863448188659eba88ff0, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dbccb72982b1ab45acaa4d3ce9acbca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Uncommon
-  description: Not as common as something common

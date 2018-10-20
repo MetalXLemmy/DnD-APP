@@ -5,11 +5,27 @@ using UnityEngine;
 
 public class SaveLoadGui : MonoBehaviour {
 
-    List<SaveableObject> saveableObjects;
+    List<SaveableObject> saveableObjects = new List<SaveableObject>();
 
     private void Start()
     {
-        saveableObjects = GetComponents<SaveableObject>().ToList();
+        Rarity rarity = new Rarity();
+        rarity.name = "Common";
+        rarity.description = "Really common, almost mundane, even.";
+
+        saveableObjects.Add(rarity);
+
+        rarity = new Rarity();
+        rarity.name = "Uncommon";
+        rarity.description = "Just a little less common, like a little surprise!";
+
+        saveableObjects.Add(rarity);
+
+        Biome biome = new Biome();
+        biome.name = "Grasslands";
+        biome.description = "Nice, peaceful, normal, grass.";
+
+        saveableObjects.Add(biome);
     }
 
     private void OnGUI()
@@ -23,10 +39,11 @@ public class SaveLoadGui : MonoBehaviour {
         }
         else if (GUI.Button(new Rect(10, 60, 120, 30), "Load all Linked"))
         {
-            foreach (SaveableObject saveableObject in saveableObjects)
-            {
-                saveableObject.LoadObject();
-            }
+            SaveableObject saveableObject = new Rarity();
+            saveableObject.LoadAll<Rarity>();
+
+            saveableObject = new Biome();
+            saveableObject.LoadAll<Biome>();
         }
     }
 }

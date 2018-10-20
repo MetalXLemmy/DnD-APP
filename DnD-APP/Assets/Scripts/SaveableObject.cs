@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using System.IO;
+using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-public abstract class SaveableObject : MonoBehaviour {
+public abstract class SaveableObject {
 
     protected string DataLocation = "/";
 
@@ -18,13 +19,13 @@ public abstract class SaveableObject : MonoBehaviour {
             identifier = GetIdentifier();
         }
 
-        Debug.Log(Application.persistentDataPath + DataLocation + identifier + ".dat");
-
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + DataLocation + identifier + ".dat");
 
         formatter.Serialize(file, serializableObject);
         file.Close();
+
+        Debug.Log("Saved: " + DataLocation + identifier);
     }
 
     protected object Load()
@@ -35,6 +36,8 @@ public abstract class SaveableObject : MonoBehaviour {
             FileStream file = File.Open(Application.persistentDataPath + DataLocation + identifier + ".dat", FileMode.Open);
             object data = formatter.Deserialize(file);
             file.Close();
+
+            Debug.Log("Loaded: " + DataLocation + identifier);
 
             return data;
         }
@@ -54,7 +57,6 @@ public abstract class SaveableObject : MonoBehaviour {
         }
         catch (DirectoryNotFoundException e)
         {
-            Debug.Log(e);
             identifier = 0;
         }
         return identifier;
@@ -62,4 +64,25 @@ public abstract class SaveableObject : MonoBehaviour {
 
     public abstract void SaveObject();
     public abstract void LoadObject();
+
+    public List<T> LoadAll<T> () where T : SaveableObject, new()
+    {
+        List<T> returnList = new List<T>();
+
+        Directory.CreateDirectory(Application.persistentDataPath + DataLocation);
+
+        List<string> files = Directory.GetFiles(Application.persistentDataPath + DataLocation)
+            .Select(filename => Path.GetFileNameWithoutExtension(filename))
+            .OrderBy(f => f).ToList();
+
+        foreach(string file in files)
+        {
+            T saveableObject = new T();
+            saveableObject.identifier = int.Parse(file);
+            saveableObject.LoadObject();
+
+            returnList.Add(saveableObject);
+        }
+        return returnList;
+    }
 }

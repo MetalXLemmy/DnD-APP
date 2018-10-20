@@ -1,45 +1,46 @@
 ﻿using System;
 using UnityEngine;
 
-public class Rarity : SaveableObject {
+public class Biome : SaveableObject {
 
     public string name = "";
 
     public string description = "";
 
-    public Rarity()
+    public Biome()
     {
-        DataLocation = "/Rarity/";
+        DataLocation = "/Biome/";
 
     }
 
     public override void SaveObject()
     {
-        RarityObject rarityObject = new RarityObject
+        BiomeObject biomeObject = new BiomeObject
         {
             identifier = identifier,
             name = name,
             description = description
         };
 
-        Save(rarityObject);
+        Save(biomeObject);
     }
 
     public override void LoadObject()
     {
         object loadedObject = Load();
+
         if (loadedObject != null)
         {
-            RarityObject rarityObject = (RarityObject)loadedObject;
-            identifier = rarityObject.identifier;
-            name = rarityObject.name;
-            description = rarityObject.description;
+            BiomeObject biomeObject = (BiomeObject)loadedObject;
+            identifier = biomeObject.identifier;
+            name = biomeObject.name;
+            description = biomeObject.description;
         }
     }
 }
 
 [Serializable]
-class RarityObject
+class BiomeObject
 {
     public int identifier;
     public string name;
