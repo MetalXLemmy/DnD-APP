@@ -6,9 +6,11 @@ using UnityEngine;
 
 public abstract class SaveableObject {
 
+    public string name = "";
+
     protected string DataLocation = "/";
 
-    protected int identifier = -1;
+    public int identifier = -1;
 
 	protected  void Save(object serializableObject)
     {
@@ -49,9 +51,9 @@ public abstract class SaveableObject {
         try
         {
             string file = Directory.GetFiles(Application.persistentDataPath + DataLocation)
+            .OrderByDescending(d => new FileInfo(d).CreationTime)
             .Select(filename => Path.GetFileNameWithoutExtension(filename))
-            .OrderBy(f => f)
-            .Max();
+            .First();
             int.TryParse(file, out identifier);
             identifier++;
         }
@@ -72,8 +74,9 @@ public abstract class SaveableObject {
         Directory.CreateDirectory(Application.persistentDataPath + DataLocation);
 
         List<string> files = Directory.GetFiles(Application.persistentDataPath + DataLocation)
+            .OrderBy(d => new FileInfo(d).CreationTime)
             .Select(filename => Path.GetFileNameWithoutExtension(filename))
-            .OrderBy(f => f).ToList();
+            .ToList();
 
         foreach(string file in files)
         {

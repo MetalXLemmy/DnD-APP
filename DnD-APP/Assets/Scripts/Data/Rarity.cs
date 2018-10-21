@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class Rarity : SaveableObject {
 
-    public string name = "";
-
     public string description = "";
 
     public Rarity()
     {
-        DataLocation = "/Rarity/";
+        DataLocation = DataLocation + "Rarity/";
 
     }
 
@@ -31,7 +29,6 @@ public class Rarity : SaveableObject {
         if (loadedObject != null)
         {
             RarityObject rarityObject = (RarityObject)loadedObject;
-            identifier = rarityObject.identifier;
             name = rarityObject.name;
             description = rarityObject.description;
         }

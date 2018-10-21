@@ -1,28 +1,26 @@
 ﻿using System;
 using UnityEngine;
 
-public class Biome : SaveableObject {
-
-    public string name = "";
+public class Effect : SaveableObject {
 
     public string description = "";
 
-    public Biome()
+    public Effect()
     {
-        DataLocation = "/Biome/";
+        DataLocation = DataLocation + "Effect/";
 
     }
 
     public override void SaveObject()
     {
-        BiomeObject biomeObject = new BiomeObject
+        EffectObject effectObject = new EffectObject
         {
             identifier = identifier,
             name = name,
             description = description
         };
 
-        Save(biomeObject);
+        Save(effectObject);
     }
 
     public override void LoadObject()
@@ -31,16 +29,15 @@ public class Biome : SaveableObject {
 
         if (loadedObject != null)
         {
-            BiomeObject biomeObject = (BiomeObject)loadedObject;
-            identifier = biomeObject.identifier;
-            name = biomeObject.name;
-            description = biomeObject.description;
+            EffectObject effectObject = (EffectObject)loadedObject;
+            name = effectObject.name;
+            description = effectObject.description;
         }
     }
 }
 
 [Serializable]
-class BiomeObject
+class EffectObject
 {
     public int identifier;
     public string name;
