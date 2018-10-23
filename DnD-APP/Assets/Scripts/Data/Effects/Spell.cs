@@ -25,7 +25,7 @@ public class Spell : Effect {
             description = description,
             higherLevelDescription = higherLevelDescription,
             spellLevel = spellLevel
-    };
+        };
 
         foreach(SpellEffect spellEffect in spellEffects)
         {
@@ -48,7 +48,7 @@ public class Spell : Effect {
             spellLevel = effectObject.spellLevel;
 
             SpellEffect spellEffect = new SpellEffect();
-            spellEffects = spellEffect.LoadAllByItem(identifier);
+            spellEffects = spellEffect.LoadAllBySpell(identifier);
         }
     }
 }

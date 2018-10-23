@@ -46,6 +46,15 @@ public abstract class SaveableObject {
         return null;
     }
 
+    protected void Delete(object serializableObject)
+    {
+        if (File.Exists(Application.persistentDataPath + DataLocation + identifier + ".dat"))
+        {
+            File.Delete(Application.persistentDataPath + DataLocation + identifier + ".dat");
+            Debug.Log("Deleted: " + DataLocation + identifier + ".dat");
+        }
+    }
+
     protected int GetIdentifier()
     {
         try

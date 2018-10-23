@@ -44,6 +44,10 @@ public class EffectWindow : MonoBehaviour {
                 Status status = new Status();
                 loadedEffects.AddRange(status.LoadAll<Status>().ToArray());
                 break;
+            case "Spell":
+                Spell spell = new Spell();
+                loadedEffects.AddRange(spell.LoadAll<Spell>().ToArray());
+                break;
         }
 
         foreach (Effect effect in loadedEffects)
@@ -51,6 +55,26 @@ public class EffectWindow : MonoBehaviour {
             CreateRowForObject(effect);
         }
     } 
+
+    public List<Effect> GetSelectedEffects()
+    {
+        return selectedEffects;
+    }
+
+    public void SetSelectedEffects(List<Effect> givenEffects)
+    {
+        foreach (Transform child in ResultWindow.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        selectedEffects = givenEffects;
+
+        foreach(Effect givenEffect in givenEffects)
+        {
+            CreateSelectedRow(givenEffect);
+        }
+    }
 
     private void CreateRowForObject(Effect effect)
     {

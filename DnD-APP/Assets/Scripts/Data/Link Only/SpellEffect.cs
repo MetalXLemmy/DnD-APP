@@ -4,14 +4,23 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
+public enum EffectType
+{
+    Ability,
+    Damage,
+    Spell,
+    Status
+}
+
 public class SpellEffect : SaveableObject {
 
     public int spellIdentifier;
-    public string effectIdentifier;
+    public int effectIdentifier;
+    public EffectType effectType;
 
     public SpellEffect()
     {
-        DataLocation = DataLocation + "Spell/";
+        DataLocation = DataLocation + "Effect/Spell/";
 
     }
 
@@ -22,7 +31,7 @@ public class SpellEffect : SaveableObject {
         {
             identifier = identifier,
             spellIdentifier = spellIdentifier,
-            effectIdentifier = effectIdentifier
+            effectIdentifier = effectIdentifier,
         };
 
         Save(itemEffectObject);
@@ -41,23 +50,48 @@ public class SpellEffect : SaveableObject {
         }
     }
 
-    public List<SpellEffect> LoadAllByItem(int spellIdentifier)
+    public List<SpellEffect> LoadAllBySpell(int spellIdentifier)
     {
         List<SpellEffect> returnList = new List<SpellEffect>();
 
         Directory.CreateDirectory(Application.persistentDataPath + DataLocation + spellIdentifier + "/");
 
-        List<string> files = Directory.GetFiles(Application.persistentDataPath + DataLocation + spellIdentifier + "/")
-        .Select(filename => Path.GetFileNameWithoutExtension(filename))
-        .OrderBy(f => f).ToList();
+        string[] dirs = Directory.GetDirectories(Application.persistentDataPath + DataLocation + spellIdentifier + "/");
 
-        foreach (string file in files)
+        foreach (string dir in dirs)
         {
-            SpellEffect saveableObject = new SpellEffect();
-            saveableObject.identifier = int.Parse(file);
-            saveableObject.LoadObject();
+            List<string> files = Directory.GetFiles(dir)
+            .Select(filename => Path.GetFileNameWithoutExtension(filename))
+            .OrderBy(f => f).ToList();
 
-            returnList.Add(saveableObject);
+            foreach (string file in files)
+            {
+                SpellEffect saveableObject = new SpellEffect();
+                saveableObject.identifier = int.Parse(file);
+
+                string[] dirString = dir.Split('/');
+
+                switch (dirString[dirString.Length-1])
+                {
+                    case "Damage":
+                        saveableObject.effectType = EffectType.Damage;
+                        break;
+                    case "Ability":
+                        saveableObject.effectType = EffectType.Ability;
+                        break;
+                    case "Spell":
+                        saveableObject.effectType = EffectType.Spell;
+                        break;
+                    case "Status":
+                        saveableObject.effectType = EffectType.Status;
+                        break;
+                }
+
+                saveableObject.LoadObject();
+
+                returnList.Add(saveableObject);
+            }
+
         }
 
         return returnList;
@@ -65,7 +99,19 @@ public class SpellEffect : SaveableObject {
 
     public void SetDataLocation()
     {
-        DataLocation = DataLocation + spellIdentifier + "/" + effectIdentifier + "/";
+        DataLocation = DataLocation + spellIdentifier + "/" + effectType + "/";
+    }
+
+    public void DeleteObject()
+    {
+        SetDataLocation();
+        SpellEffectObject itemEffectObject = new SpellEffectObject
+        {
+            identifier = identifier,
+            spellIdentifier = spellIdentifier,
+            effectIdentifier = effectIdentifier,
+        };
+        Delete(itemEffectObject);
     }
 }
 
@@ -74,5 +120,5 @@ class SpellEffectObject
 {
     public int identifier;
     public int spellIdentifier;
-    public string effectIdentifier;
+    public int effectIdentifier;
 }
