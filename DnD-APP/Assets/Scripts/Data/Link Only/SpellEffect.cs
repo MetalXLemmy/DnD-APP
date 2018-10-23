@@ -4,24 +4,24 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-public class ItemEffect : SaveableObject {
+public class SpellEffect : SaveableObject {
 
-    public int itemIdentifier;
+    public int spellIdentifier;
     public string effectIdentifier;
 
-    public ItemEffect()
+    public SpellEffect()
     {
-        DataLocation = DataLocation + "Item/";
+        DataLocation = DataLocation + "Spell/";
 
     }
 
     public override void SaveObject()
     {
         SetDataLocation();
-        ItemEffectObject itemEffectObject = new ItemEffectObject
+        SpellEffectObject itemEffectObject = new SpellEffectObject
         {
             identifier = identifier,
-            itemIdentifier = itemIdentifier,
+            spellIdentifier = spellIdentifier,
             effectIdentifier = effectIdentifier
         };
 
@@ -35,25 +35,25 @@ public class ItemEffect : SaveableObject {
 
         if (loadedObject != null)
         {
-            ItemEffectObject itemEffectObject = (ItemEffectObject)loadedObject;
-            itemIdentifier = itemEffectObject.itemIdentifier;
+            SpellEffectObject itemEffectObject = (SpellEffectObject)loadedObject;
+            spellIdentifier = itemEffectObject.spellIdentifier;
             effectIdentifier = itemEffectObject.effectIdentifier;
         }
     }
 
-    public List<ItemEffect> LoadAllByItem(int itemIdentifier)
+    public List<SpellEffect> LoadAllByItem(int spellIdentifier)
     {
-        List<ItemEffect> returnList = new List<ItemEffect>();
+        List<SpellEffect> returnList = new List<SpellEffect>();
 
-        Directory.CreateDirectory(Application.persistentDataPath + DataLocation + itemIdentifier + "/");
+        Directory.CreateDirectory(Application.persistentDataPath + DataLocation + spellIdentifier + "/");
 
-        List<string> files = Directory.GetFiles(Application.persistentDataPath + DataLocation + itemIdentifier + "/")
+        List<string> files = Directory.GetFiles(Application.persistentDataPath + DataLocation + spellIdentifier + "/")
         .Select(filename => Path.GetFileNameWithoutExtension(filename))
         .OrderBy(f => f).ToList();
 
         foreach (string file in files)
         {
-            ItemEffect saveableObject = new ItemEffect();
+            SpellEffect saveableObject = new SpellEffect();
             saveableObject.identifier = int.Parse(file);
             saveableObject.LoadObject();
 
@@ -65,14 +65,14 @@ public class ItemEffect : SaveableObject {
 
     public void SetDataLocation()
     {
-        DataLocation = DataLocation + itemIdentifier + "/" + effectIdentifier + "/";
+        DataLocation = DataLocation + spellIdentifier + "/" + effectIdentifier + "/";
     }
 }
 
 [Serializable]
-class ItemEffectObject
+class SpellEffectObject
 {
     public int identifier;
-    public int itemIdentifier;
+    public int spellIdentifier;
     public string effectIdentifier;
 }

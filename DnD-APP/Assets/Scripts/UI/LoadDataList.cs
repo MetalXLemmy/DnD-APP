@@ -35,6 +35,26 @@ public class LoadDataList : MonoBehaviour {
                 Biome biome = new Biome();
                 saveableObjects.AddRange(biome.LoadAll<Biome>().ToArray());
                 break;
+            case "Item":
+                Item item = new Item();
+                saveableObjects.AddRange(item.LoadAll<Item>().ToArray());
+                break;
+            case "Damage":
+                Damage damage = new Damage();
+                saveableObjects.AddRange(damage.LoadAll<Damage>().ToArray());
+                break;
+            case "Ability":
+                Ability ability = new Ability();
+                saveableObjects.AddRange(ability.LoadAll<Ability>().ToArray());
+                break;
+            case "Status":
+                Status status = new Status();
+                saveableObjects.AddRange(status.LoadAll<Status>().ToArray());
+                break;
+            case "Spell":
+                Spell spell = new Spell();
+                saveableObjects.AddRange(spell.LoadAll<Spell>().ToArray());
+                break;
         }
 
         foreach (SaveableObject saveableObject in saveableObjects)

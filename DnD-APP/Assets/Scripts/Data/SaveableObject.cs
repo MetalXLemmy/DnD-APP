@@ -57,7 +57,7 @@ public abstract class SaveableObject {
             int.TryParse(file, out identifier);
             identifier++;
         }
-        catch (DirectoryNotFoundException e)
+        catch
         {
             identifier = 0;
         }

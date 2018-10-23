@@ -14,6 +14,7 @@ public class Item : SaveableObject {
     public Item()
     {
         DataLocation = DataLocation + "Item/";
+        effects = new List<ItemEffect>();
 
     }
 
