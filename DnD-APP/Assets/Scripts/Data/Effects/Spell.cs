@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class Spell : Effect {
 
     public string spellLevel = "";
 
-    public List<SpellEffect> spellEffects;
+    public List<LinkedEffect> spellEffects;
 
     public Spell()
     {
@@ -27,12 +28,17 @@ public class Spell : Effect {
             spellLevel = spellLevel
         };
 
-        foreach(SpellEffect spellEffect in spellEffects)
-        {
-            spellEffect.SaveObject();
+        Save(effectObject);
+
+        if (Directory.Exists(Application.persistentDataPath + DataLocation + identifier + "/")) {
+            Directory.Delete(Application.persistentDataPath + DataLocation + identifier + "/", true);
         }
 
-        Save(effectObject);
+        foreach (SpellEffect spellEffect in spellEffects)
+        {
+            spellEffect.spellIdentifier = identifier;
+            spellEffect.SaveObject();
+        }
     }
 
     public override void LoadObject()
@@ -48,7 +54,7 @@ public class Spell : Effect {
             spellLevel = effectObject.spellLevel;
 
             SpellEffect spellEffect = new SpellEffect();
-            spellEffects = spellEffect.LoadAllBySpell(identifier);
+            spellEffects = spellEffect.LoadAllByItem(identifier);
         }
     }
 }

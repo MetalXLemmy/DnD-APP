@@ -17,13 +17,17 @@ public class EffectWindow : MonoBehaviour {
 
     public void Start()
     {
-        selectedEffects = new List<Effect>();
         EffectDropdown.onValueChanged.AddListener( delegate { UpdateList(); } );
         UpdateList();
     }
 
     void UpdateList()
     {
+        if (selectedEffects == null)
+        {
+            selectedEffects = new List<Effect>();
+        }
+
         foreach (Transform child in SelectableWindow.transform)
         {
             GameObject.Destroy(child.gameObject);
@@ -63,6 +67,11 @@ public class EffectWindow : MonoBehaviour {
 
     public void SetSelectedEffects(List<Effect> givenEffects)
     {
+        if(selectedEffects == null)
+        {
+            selectedEffects = new List<Effect>();
+        }
+
         foreach (Transform child in ResultWindow.transform)
         {
             GameObject.Destroy(child.gameObject);
@@ -92,8 +101,11 @@ public class EffectWindow : MonoBehaviour {
     private void TaskOnClick()
     {
         Effect effect = EventSystem.current.currentSelectedGameObject.GetComponentInParent<SelectableRow>().GetObject();
-        selectedEffects.Add(effect);
-        CreateSelectedRow(effect);
+        if (!selectedEffects.Contains(effect))
+        {
+            selectedEffects.Add(effect);
+            CreateSelectedRow(effect);
+        }
     }
 
     private void CreateSelectedRow(Effect effect)

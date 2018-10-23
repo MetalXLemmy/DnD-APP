@@ -27,7 +27,7 @@ public class EditSpell : EditInterface {
         foreach(SpellEffect spellEffect in status.spellEffects)
         {
             Effect effect = new Effect();
-
+            Debug.Log(spellEffect.identifier);
             switch (spellEffect.effectType)
             {
                 case EffectType.Ability:

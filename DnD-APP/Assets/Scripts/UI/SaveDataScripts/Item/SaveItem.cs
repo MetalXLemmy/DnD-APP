@@ -14,7 +14,8 @@ public class SaveItem : MonoBehaviour {
     public InputField weightInput;
     public Dropdown raritySelection;
     public Toggle isMagicInput;
-    //TODO Add effects
+
+    public EffectWindow effectWindow;
 
     void Start()
     {
@@ -33,10 +34,38 @@ public class SaveItem : MonoBehaviour {
         item.name = nameInput.text;
         item.description = descriptionInput.text;
         item.baseWeight = float.Parse(weightInput.text);
-        Debug.Log(raritySelection.options[raritySelection.value].text);
         item.rarityID = int.Parse(raritySelection.options[raritySelection.value].text.Substring(0,1));
         item.isMagicItem = isMagicInput.isOn;
-        //TODO Add effects
+
+        List<LinkedEffect> itemEffects = new List<LinkedEffect>();
+
+        foreach (Effect effect in effectWindow.GetSelectedEffects())
+        {
+            ItemEffect itemEffect = new ItemEffect();
+            itemEffect.spellIdentifier = item.identifier;
+            itemEffect.effectIdentifier = effect.identifier;
+
+            switch (effect.GetType().Name)
+            {
+                case "Damage":
+                    itemEffect.effectType = EffectType.Damage;
+                    break;
+                case "Spell":
+                    itemEffect.effectType = EffectType.Spell;
+                    break;
+                case "Ability":
+                    itemEffect.effectType = EffectType.Ability;
+                    break;
+                case "Status":
+                    itemEffect.effectType = EffectType.Status;
+                    break;
+            }
+
+            itemEffects.Add(itemEffect);
+        }
+
+        item.effects = itemEffects;
+
         item.SaveObject();
 
         nameInput.text = "";

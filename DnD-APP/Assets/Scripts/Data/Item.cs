@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,13 +9,13 @@ public class Item : SaveableObject {
     public float baseWeight = 0.0f;
     public int rarityID = 0;
     public bool isMagicItem = false;
-    public List<ItemEffect> effects;
+    public List<LinkedEffect> effects;
 
 
     public Item()
     {
         DataLocation = DataLocation + "Item/";
-        effects = new List<ItemEffect>();
+        effects = new List<LinkedEffect>();
 
     }
 
@@ -30,12 +31,18 @@ public class Item : SaveableObject {
             isMagicItem = isMagicItem
         };
 
-        foreach(ItemEffect effect in effects)
+        Save(itemObject);
+
+        if (Directory.Exists(Application.persistentDataPath + DataLocation + identifier + "/"))
         {
-            effect.SaveObject();
+            Directory.Delete(Application.persistentDataPath + DataLocation + identifier + "/", true);
         }
 
-        Save(itemObject);
+        foreach (ItemEffect itemEffect in effects)
+        {
+            itemEffect.spellIdentifier = identifier;
+            itemEffect.SaveObject();
+        }
     }
 
     public override void LoadObject()

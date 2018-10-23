@@ -15,7 +15,6 @@ public class SaveSpell : MonoBehaviour {
     public InputField higherLevelInput;
     public EffectWindow effectWindow;
 
-
     void Start()
     {
         Button button = gameObject.GetComponent<Button>();
@@ -35,7 +34,7 @@ public class SaveSpell : MonoBehaviour {
         spell.spellLevel = spellLevelInput.text;
         spell.higherLevelDescription = higherLevelInput.text;
 
-        List<SpellEffect> spellEffects = new List<SpellEffect>();
+        List<LinkedEffect> spellEffects = new List<LinkedEffect>();
 
         foreach (Effect effect in effectWindow.GetSelectedEffects())
         {
