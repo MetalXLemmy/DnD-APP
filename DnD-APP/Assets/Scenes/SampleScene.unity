@@ -4931,7 +4931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemRow: {fileID: 114600374589394156, guid: f5d534904335311498309f21a78e0f25, type: 2}
-  objectType: GenericItem
+  loadedType: 7
   editInterface: {fileID: 1633708139}
   editPage: {fileID: 1633708140}
   currentPage: {fileID: 1270269424}
@@ -6176,7 +6176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemRow: {fileID: 114600374589394156, guid: f5d534904335311498309f21a78e0f25, type: 2}
-  objectType: Biome
+  loadedType: 2
   editInterface: {fileID: 1119431860}
   editPage: {fileID: 1119431861}
   currentPage: {fileID: 1241792086}
@@ -8564,7 +8564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemRow: {fileID: 114600374589394156, guid: f5d534904335311498309f21a78e0f25, type: 2}
-  objectType: Damage
+  loadedType: 3
   editInterface: {fileID: 638484601}
   editPage: {fileID: 638484602}
   currentPage: {fileID: 2144910014}
@@ -11452,7 +11452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemRow: {fileID: 114600374589394156, guid: f5d534904335311498309f21a78e0f25, type: 2}
-  objectType: Ability
+  loadedType: 4
   editInterface: {fileID: 1149453068}
   editPage: {fileID: 1149453069}
   currentPage: {fileID: 1701109068}
@@ -14085,7 +14085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemRow: {fileID: 114600374589394156, guid: f5d534904335311498309f21a78e0f25, type: 2}
-  objectType: Rarity
+  loadedType: 1
   editInterface: {fileID: 1005529577}
   editPage: {fileID: 1005529578}
   currentPage: {fileID: 1025441432}
@@ -15027,7 +15027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0438fa20c7c41e74aaa8a1c8290e4616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadedType: Rarity
+  LoadedType: 1
 --- !u!222 &531013998
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17133,7 +17133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0438fa20c7c41e74aaa8a1c8290e4616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadedType: GenericItem
+  LoadedType: 7
 --- !u!1 &583191015
 GameObject:
   m_ObjectHideFlags: 0
@@ -27148,7 +27148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemRow: {fileID: 114600374589394156, guid: f5d534904335311498309f21a78e0f25, type: 2}
-  objectType: Spell
+  loadedType: 6
   editInterface: {fileID: 1810264361}
   editPage: {fileID: 1810264360}
   currentPage: {fileID: 1426237181}
@@ -43025,7 +43025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemRow: {fileID: 114600374589394156, guid: f5d534904335311498309f21a78e0f25, type: 2}
-  objectType: Status
+  loadedType: 5
   editInterface: {fileID: 761444028}
   editPage: {fileID: 761444027}
   currentPage: {fileID: 828395502}
@@ -43795,7 +43795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0438fa20c7c41e74aaa8a1c8290e4616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadedType: Item
+  LoadedType: 0
 --- !u!114 &1565900257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46872,7 +46872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0438fa20c7c41e74aaa8a1c8290e4616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadedType: Rarity
+  LoadedType: 1
 --- !u!222 &1666752766
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -47163,7 +47163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0438fa20c7c41e74aaa8a1c8290e4616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadedType: Item
+  LoadedType: 0
 --- !u!114 &1670788074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53016,7 +53016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0438fa20c7c41e74aaa8a1c8290e4616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadedType: Biome
+  LoadedType: 0
 --- !u!114 &1871000366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58642,7 +58642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0438fa20c7c41e74aaa8a1c8290e4616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadedType: GenericItem
+  LoadedType: 0
 --- !u!222 &2064986868
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -58703,7 +58703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemRow: {fileID: 114600374589394156, guid: f5d534904335311498309f21a78e0f25, type: 2}
-  objectType: Item
+  loadedType: 0
   editInterface: {fileID: 1419403326}
   editPage: {fileID: 1419403327}
   currentPage: {fileID: 1789178107}
@@ -60069,7 +60069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemRow: {fileID: 114600374589394156, guid: f5d534904335311498309f21a78e0f25, type: 2}
-  objectType: BiomeItem
+  loadedType: 8
   editInterface: {fileID: 2038391396}
   editPage: {fileID: 2038391394}
   currentPage: {fileID: 587982247}
@@ -61463,7 +61463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0438fa20c7c41e74aaa8a1c8290e4616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadedType: Biome
+  LoadedType: 2
 --- !u!114 &2146420383
 MonoBehaviour:
   m_ObjectHideFlags: 0
