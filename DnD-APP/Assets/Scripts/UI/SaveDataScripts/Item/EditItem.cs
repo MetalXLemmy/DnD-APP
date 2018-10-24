@@ -8,6 +8,7 @@ public class EditItem : EditInterface {
     public InputField weightInput;
     public Dropdown raritySelection;
     public Toggle isMagicInput;
+    public InputField averageCost;
 
     public EffectWindow effectWindow;
 
@@ -24,6 +25,7 @@ public class EditItem : EditInterface {
         weightInput.text = item.baseWeight.ToString();
         raritySelection.value = item.rarityID-1;
         isMagicInput.isOn = item.isMagicItem;
+        averageCost.text = item.cost.ToString();
 
         List<Effect> effects = new List<Effect>();
 

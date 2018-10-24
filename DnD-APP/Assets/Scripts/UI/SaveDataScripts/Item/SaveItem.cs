@@ -14,6 +14,7 @@ public class SaveItem : MonoBehaviour {
     public InputField weightInput;
     public Dropdown raritySelection;
     public Toggle isMagicInput;
+    public InputField averageCostInput;
 
     public EffectWindow effectWindow;
 
@@ -36,6 +37,7 @@ public class SaveItem : MonoBehaviour {
         item.baseWeight = float.Parse(weightInput.text);
         item.rarityID = int.Parse(raritySelection.options[raritySelection.value].text.Substring(0,1));
         item.isMagicItem = isMagicInput.isOn;
+        item.cost = float.Parse(averageCostInput.text);
 
         List<LinkedEffect> itemEffects = new List<LinkedEffect>();
 

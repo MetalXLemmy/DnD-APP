@@ -7,7 +7,7 @@ public class LoadDataList : MonoBehaviour {
 
     public Image ItemRow;
 
-    public string objectType;
+    public LoadedType loadedType;
 
     public EditInterface editInterface;
 
@@ -25,35 +25,43 @@ public class LoadDataList : MonoBehaviour {
 
         List<SaveableObject> saveableObjects = new List<SaveableObject>();
 
-        switch (objectType)
+        switch (loadedType)
         {
-            case "Rarity":
+            case LoadedType.Rarity:
                 Rarity rarity = new Rarity();
                 saveableObjects.AddRange(rarity.LoadAll<Rarity>().ToArray());
                 break;
-            case "Biome":
+            case LoadedType.Biome:
                 Biome biome = new Biome();
                 saveableObjects.AddRange(biome.LoadAll<Biome>().ToArray());
                 break;
-            case "Item":
+            case LoadedType.Item:
                 Item item = new Item();
                 saveableObjects.AddRange(item.LoadAll<Item>().ToArray());
                 break;
-            case "Damage":
+            case LoadedType.Damage:
                 Damage damage = new Damage();
                 saveableObjects.AddRange(damage.LoadAll<Damage>().ToArray());
                 break;
-            case "Ability":
+            case LoadedType.Ability:
                 Ability ability = new Ability();
                 saveableObjects.AddRange(ability.LoadAll<Ability>().ToArray());
                 break;
-            case "Status":
+            case LoadedType.Status:
                 Status status = new Status();
                 saveableObjects.AddRange(status.LoadAll<Status>().ToArray());
                 break;
-            case "Spell":
+            case LoadedType.Spell:
                 Spell spell = new Spell();
                 saveableObjects.AddRange(spell.LoadAll<Spell>().ToArray());
+                break;
+            case LoadedType.GenericItem:
+                GenericItem genericItem = new GenericItem();
+                saveableObjects.AddRange(genericItem.LoadAll<GenericItem>().ToArray());
+                break;
+            case LoadedType.BiomeItem:
+                BiomeItem biomeItem = new BiomeItem();
+                saveableObjects.AddRange(biomeItem.LoadAll<BiomeItem>().ToArray());
                 break;
         }
 

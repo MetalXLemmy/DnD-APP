@@ -20,6 +20,9 @@ public class GenericItem : SaveableObject {
         if (loadedObject != null)
         {
             GenericItemObject genericItemObject = (GenericItemObject)loadedObject;
+            genericItem = new Item();
+            generalizedItems = new List<Item>();
+            name = genericItemObject.name;
             genericItem.identifier = genericItemObject.itemIdentifier;
             genericItem.LoadObject();
 
@@ -37,6 +40,7 @@ public class GenericItem : SaveableObject {
     {
         GenericItemObject itemObject = new GenericItemObject
         {
+            name = name,
             itemIdentifier = genericItem.identifier
         };
 
@@ -56,6 +60,7 @@ public class GenericItem : SaveableObject {
 [Serializable]
 class GenericItemObject
 {
+    public string name;
     public int itemIdentifier;
     public int[] itemIdentifiers;
 }

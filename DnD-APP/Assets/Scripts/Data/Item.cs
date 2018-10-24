@@ -9,6 +9,7 @@ public class Item : SaveableObject {
     public float baseWeight = 0.0f;
     public int rarityID = 0;
     public bool isMagicItem = false;
+    public float cost = 0.0f;
     public List<LinkedEffect> effects;
 
 
@@ -28,7 +29,8 @@ public class Item : SaveableObject {
             description = description,
             baseWeight = baseWeight,
             rarityID = rarityID,
-            isMagicItem = isMagicItem
+            isMagicItem = isMagicItem,
+            cost = cost
         };
 
         Save(itemObject);
@@ -56,6 +58,7 @@ public class Item : SaveableObject {
             baseWeight = itemObject.baseWeight;
             rarityID = itemObject.rarityID;
             isMagicItem = itemObject.isMagicItem;
+            cost = itemObject.cost;
 
             ItemEffect itemEffect = new ItemEffect();
             effects = itemEffect.LoadAllByItem(identifier);
@@ -72,4 +75,5 @@ class ItemObject
     public float baseWeight = 0.0f;
     public int rarityID = 0;
     public bool isMagicItem = false;
+    public float cost = 0.0f;
 }
