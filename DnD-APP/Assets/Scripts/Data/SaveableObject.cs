@@ -6,9 +6,11 @@ using UnityEngine;
 
 public abstract class SaveableObject {
 
+    public string name = "";
+
     protected string DataLocation = "/";
 
-    protected int identifier = -1;
+    public int identifier = -1;
 
 	protected  void Save(object serializableObject)
     {
@@ -44,18 +46,27 @@ public abstract class SaveableObject {
         return null;
     }
 
+    protected void Delete(object serializableObject)
+    {
+        if (File.Exists(Application.persistentDataPath + DataLocation + identifier + ".dat"))
+        {
+            File.Delete(Application.persistentDataPath + DataLocation + identifier + ".dat");
+            Debug.Log("Deleted: " + DataLocation + identifier + ".dat");
+        }
+    }
+
     protected int GetIdentifier()
     {
         try
         {
             string file = Directory.GetFiles(Application.persistentDataPath + DataLocation)
+            .OrderByDescending(d => new FileInfo(d).CreationTime)
             .Select(filename => Path.GetFileNameWithoutExtension(filename))
-            .OrderBy(f => f)
-            .Max();
+            .First();
             int.TryParse(file, out identifier);
             identifier++;
         }
-        catch (DirectoryNotFoundException e)
+        catch
         {
             identifier = 0;
         }
@@ -72,8 +83,9 @@ public abstract class SaveableObject {
         Directory.CreateDirectory(Application.persistentDataPath + DataLocation);
 
         List<string> files = Directory.GetFiles(Application.persistentDataPath + DataLocation)
+            .OrderBy(d => new FileInfo(d).CreationTime)
             .Select(filename => Path.GetFileNameWithoutExtension(filename))
-            .OrderBy(f => f).ToList();
+            .ToList();
 
         foreach(string file in files)
         {

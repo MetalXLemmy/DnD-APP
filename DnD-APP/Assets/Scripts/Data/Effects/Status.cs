@@ -1,45 +1,41 @@
 ﻿using System;
 using UnityEngine;
 
-public class Rarity : SaveableObject {
+public class Status : Effect {
 
-    public string name = "";
-
-    public string description = "";
-
-    public Rarity()
+    public Status()
     {
-        DataLocation = "/Rarity/";
+        DataLocation = DataLocation + "Status/";
 
     }
 
     public override void SaveObject()
     {
-        RarityObject rarityObject = new RarityObject
+        StatusObject effectObject = new StatusObject
         {
             identifier = identifier,
             name = name,
             description = description
         };
 
-        Save(rarityObject);
+        Save(effectObject);
     }
 
     public override void LoadObject()
     {
         object loadedObject = Load();
+
         if (loadedObject != null)
         {
-            RarityObject rarityObject = (RarityObject)loadedObject;
-            identifier = rarityObject.identifier;
-            name = rarityObject.name;
-            description = rarityObject.description;
+            StatusObject effectObject = (StatusObject)loadedObject;
+            name = effectObject.name;
+            description = effectObject.description;
         }
     }
 }
 
 [Serializable]
-class RarityObject
+class StatusObject
 {
     public int identifier;
     public string name;
