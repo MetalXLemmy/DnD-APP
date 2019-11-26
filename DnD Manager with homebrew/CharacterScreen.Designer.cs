@@ -126,7 +126,6 @@
             // 
             // HumanSilhouette
             // 
-            this.HumanSilhouette.BackgroundImage = global::DnD_Equip_screen.Properties.Resources.Body;
             this.HumanSilhouette.Location = new System.Drawing.Point(-3, -1);
             this.HumanSilhouette.Name = "HumanSilhouette";
             this.HumanSilhouette.Size = new System.Drawing.Size(642, 633);
@@ -734,7 +733,7 @@
             this.RightHandButton.Text = "Main hand";
             this.RightHandButton.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // CharacterScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -806,7 +805,7 @@
             this.Controls.Add(this.HumanSilhouette);
             this.Controls.Add(this.label11);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.Name = "CharacterScreen";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.HumanSilhouette)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.STRvalue)).EndInit();
