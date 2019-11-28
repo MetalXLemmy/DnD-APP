@@ -1,0 +1,13 @@
+F:\Git\DnD-APP\DnD Manager with homebrew\bin\Debug\DnD Equip screen.exe.config
+F:\Git\DnD-APP\DnD Manager with homebrew\bin\Debug\DnD Equip screen.exe
+F:\Git\DnD-APP\DnD Manager with homebrew\bin\Debug\DnD Equip screen.pdb
+F:\Git\DnD-APP\DnD Manager with homebrew\obj\Debug\DnD Manager with homebrew.csprojAssemblyReference.cache
+F:\Git\DnD-APP\DnD Manager with homebrew\obj\Debug\DnD_Equip_screen.CharacterScreen.resources
+F:\Git\DnD-APP\DnD Manager with homebrew\obj\Debug\DnD_Equip_screen.Properties.Resources.resources
+F:\Git\DnD-APP\DnD Manager with homebrew\obj\Debug\DnD Manager with homebrew.csproj.GenerateResource.cache
+F:\Git\DnD-APP\DnD Manager with homebrew\obj\Debug\DnD Equip screen.exe
+F:\Git\DnD-APP\DnD Manager with homebrew\obj\Debug\DnD Equip screen.pdb
+F:\Git\DnD-APP\DnD Manager with homebrew\bin\Debug\System.Data.SQLite.dll
+F:\Git\DnD-APP\DnD Manager with homebrew\bin\Debug\System.Data.SQLite.xml
+F:\Git\DnD-APP\DnD Manager with homebrew\bin\Debug\System.Data.SQLite.dll.config
+F:\Git\DnD-APP\DnD Manager with homebrew\obj\Debug\DnD Manager with homebrew.csproj.CopyComplete
