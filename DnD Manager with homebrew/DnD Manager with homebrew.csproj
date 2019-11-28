@@ -104,6 +104,7 @@
     <None Include="Resources\Body %28female%29.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="Database\DatabaseSetup.sql" />
   </ItemGroup>
   <ItemGroup />
