@@ -1,9 +1,0 @@
-D:\Projects\DnD Equip screen\DnD Equip screen\bin\Debug\DnD Equip screen.exe.config
-D:\Projects\DnD Equip screen\DnD Equip screen\bin\Debug\DnD Equip screen.exe
-D:\Projects\DnD Equip screen\DnD Equip screen\bin\Debug\DnD Equip screen.pdb
-D:\Projects\DnD Equip screen\DnD Equip screen\obj\Debug\DnD Equip screen.csprojAssemblyReference.cache
-D:\Projects\DnD Equip screen\DnD Equip screen\obj\Debug\DnD_Equip_screen.Form1.resources
-D:\Projects\DnD Equip screen\DnD Equip screen\obj\Debug\DnD_Equip_screen.Properties.Resources.resources
-D:\Projects\DnD Equip screen\DnD Equip screen\obj\Debug\DnD Equip screen.csproj.GenerateResource.cache
-D:\Projects\DnD Equip screen\DnD Equip screen\obj\Debug\DnD Equip screen.exe
-D:\Projects\DnD Equip screen\DnD Equip screen\obj\Debug\DnD Equip screen.pdb
