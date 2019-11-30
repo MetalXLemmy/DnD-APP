@@ -13,7 +13,7 @@ CREATE TABLE "Proficiency" (
 	"name"	TEXT NOT NULL,
 	"description"	TEXT,
 	"primaryProficiencyId"	INTEGER,
-	"linkedType"	TEXT,
+	"category"	TEXT,
 	"linkedId"	INTEGER,
 	FOREIGN KEY("primaryProficiencyId") REFERENCES "Proficiency"("id") ON UPDATE CASCADE ON DELETE RESTRICT
 );
@@ -47,14 +47,6 @@ CREATE TABLE "LinkedProperty" (
 	"linkedType"	TEXT,
 	"propertyId"	INTEGER,
 	PRIMARY KEY("linkedId","propertyId","linkedType")
-);
-
-CREATE TABLE "Skill" (
-	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
-	"name"	TEXT NOT NULL,
-	"description"	TEXT,
-	"primarySkillId"	INTEGER,
-	FOREIGN KEY("primarySkillId") REFERENCES "Skill"("id") ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE "Alignment" (
@@ -162,3 +154,29 @@ CREATE TABLE "Armor" (
 	"AC"	INTEGER NOT NULL,
 	FOREIGN KEY("itemId") REFERENCES "Item"("id") ON UPDATE CASCADE ON DELETE RESTRICT
 );
+
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("STR", "Strength", NULL, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("DEX", "Dexterity", NULL, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("CON", "Constitution", NULL, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("INT", "Intelligence", NULL, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("WIS", "Wisdom", NULL, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("CHA", "Charisma", NULL, "Skill")
+
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Athletics", "Athletics", 1, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Acrobatics", "Acrobatics", 2, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Sleight of Hand", "Sleight of Hand", 2, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Stealth", "Stealth", 2, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Arcana", "Arcana", 4, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("History", "History", 4, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Investigation", "Investigation", 4, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Nature", "Nature", 4, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Religion", "Religion", 4, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Animal Handling", "Animal Handling", 5, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Insight", "Insight", 5, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Medicine", "Medicine", 5, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Perception", "Perception", 5, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Survival", "Survival", 5, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Deception", "Deception", 6, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Intimidation", "Intimidation", 6, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Performance", "Performance", 6, "Skill")
+INSERT INTO Proficiency (name, description, primaryProficiencyId, category) VALUES ("Persuasion", "Persuasion", 6, "Skill")
