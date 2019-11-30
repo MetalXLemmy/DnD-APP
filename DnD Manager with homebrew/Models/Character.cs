@@ -16,6 +16,7 @@ namespace DnD_Manager.Models
         public string background { get; set; }
         public string gender { get; set; }
         public List<CharacterProficiency> proficiencies { get; set; }
+        public List<CharacterRace> races { get; set; }
 
         public override int Insert()
         {
@@ -40,6 +41,7 @@ namespace DnD_Manager.Models
             background = character.background;
             gender = character.gender;
             proficiencies = CharacterProficiency.LoadByCharacterId(id);
+            races = CharacterRace.LoadByCharacterId(id);
             return charLoad;
         }
     }

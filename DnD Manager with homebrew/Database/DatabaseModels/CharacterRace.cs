@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace DnD_Manager.Database.DatabaseModels
 {
-    class CharacterProficiency: LinkedDatabaseObject
+    class CharacterRace: LinkedDatabaseObject
     {
         public int charId { get; set; }
-        public int proficiencyId { get; set; }
-        public int proficiencyLevel { get; set; }
-        public int passiveValue { get; set; }
+        public int raceId { get; set; }
 
         public override int Insert()
         {
@@ -22,13 +20,11 @@ namespace DnD_Manager.Database.DatabaseModels
                 using (SQLiteCommand objCommand = sqlite.CreateCommand())
                 {
                     sqlite.Open();
-                    objCommand.CommandText = "INSERT INTO CharacterProficiency (charId, proficiencyId, proficiencyLevel, passiveValue) VALUES (@charId, @proficiencyId, @proficiencyLevel, @passiveValue)";
+                    objCommand.CommandText = "INSERT INTO CharacterRace (charId, raceId) VALUES (@charId, @raceId)";
                     objCommand.Prepare();
 
                     objCommand.Parameters.AddWithValue("@charId", charId);
-                    objCommand.Parameters.AddWithValue("@proficiencyId", proficiencyId);
-                    objCommand.Parameters.AddWithValue("@proficiencyLevel", proficiencyLevel);
-                    objCommand.Parameters.AddWithValue("@passiveValue", passiveValue);
+                    objCommand.Parameters.AddWithValue("@raceId", raceId);
                     int result = objCommand.ExecuteNonQuery();
                     sqlite.Close();
                     return result;
@@ -42,7 +38,7 @@ namespace DnD_Manager.Database.DatabaseModels
                 using (SQLiteCommand objCommand = sqlite.CreateCommand())
                 {
                     sqlite.Open();
-                    objCommand.CommandText = "SELECT * FROM CharacterProficiency WHERE charId = @id1 AND proficiencyId = @id2";
+                    objCommand.CommandText = "SELECT * FROM CharacterRace WHERE charId = @id1 AND raceId = @id2";
                     objCommand.Prepare();
 
                     objCommand.Parameters.AddWithValue("@id1", id1);
@@ -54,9 +50,7 @@ namespace DnD_Manager.Database.DatabaseModels
                         while (r.Read())
                         {
                             charId = Convert.ToInt32(r["charId"]);
-                            proficiencyId = Convert.ToInt32(r["proficiencyId"]);
-                            proficiencyLevel = Convert.ToInt32(r["proficiencyLevel"]);
-                            passiveValue = Convert.ToInt32(r["passiveValue"]);
+                            raceId = Convert.ToInt32(r["raceId"]);
                         }
                         sqlite.Close();
                         return true;
@@ -69,15 +63,15 @@ namespace DnD_Manager.Database.DatabaseModels
             }
         }
 
-        public static List<CharacterProficiency> LoadByCharacterId(int charId)
+        public static List<CharacterRace> LoadByCharacterId(int charId)
         {
-            List<CharacterProficiency> list = new List<CharacterProficiency>();
+            List<CharacterRace> list = new List<CharacterRace>();
             using (var sqlite = DBConnector.GetConnection())
             {
                 using (SQLiteCommand objCommand = sqlite.CreateCommand())
                 {
                     sqlite.Open();
-                    objCommand.CommandText = "SELECT * FROM CharacterProficiency WHERE charId = @id1";
+                    objCommand.CommandText = "SELECT * FROM CharacterRace WHERE charId = @id1";
                     objCommand.Prepare();
 
                     objCommand.Parameters.AddWithValue("@id1", charId);
@@ -87,11 +81,9 @@ namespace DnD_Manager.Database.DatabaseModels
                         SQLiteDataReader r = objCommand.ExecuteReader();
                         while (r.Read())
                         {
-                            CharacterProficiency charProf = new CharacterProficiency();
+                            CharacterRace charProf = new CharacterRace();
                             charProf.charId = Convert.ToInt32(r["charId"]);
-                            charProf.proficiencyId = Convert.ToInt32(r["proficiencyId"]);
-                            charProf.proficiencyLevel = Convert.ToInt32(r["proficiencyLevel"]);
-                            charProf.passiveValue = Convert.ToInt32(r["passiveValue"]);
+                            charProf.raceId = Convert.ToInt32(r["raceId"]);
                             list.Add(charProf);
                         }
                         sqlite.Close();

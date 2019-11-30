@@ -24,7 +24,7 @@ namespace DnD_Manager.Models
             proficiency.description = description;
             proficiency.primaryProficiencyId = primaryProficiencyId;
             proficiency.linkedId = linkedId;
-            proficiency.linkedType = linkedType;
+            proficiency.category = linkedType;
             return proficiency.Insert();
         }
         public override bool Load(int id)
@@ -36,7 +36,7 @@ namespace DnD_Manager.Models
             description = proficiency.description;
             primaryProficiencyId = proficiency.primaryProficiencyId;
             linkedId = proficiency.linkedId;
-            linkedType = proficiency.linkedType;
+            linkedType = proficiency.category;
             return charLoad;
         }
     }

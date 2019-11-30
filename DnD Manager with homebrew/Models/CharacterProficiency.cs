@@ -26,8 +26,7 @@ namespace DnD_Manager.Models
         }
         public override bool Load(int id)
         {
-            // You cannot load a character proficiency using 
-            return false;
+            return base.Load(id);
         }
 
         public static List<CharacterProficiency> LoadByCharacterId(int charId)
@@ -40,15 +39,7 @@ namespace DnD_Manager.Models
                 CharacterProficiency newProf = Convert(characterProficiency);
 
                 // Get Proficiency data and add it to Model
-                Database.DatabaseModels.Proficiency prof = new Database.DatabaseModels.Proficiency();
-                prof.Load(characterProficiency.proficiencyId);
-
-                newProf.name = prof.name;
-                newProf.id = prof.id;
-                newProf.description = prof.description;
-                newProf.primaryProficiencyId = prof.primaryProficiencyId;
-                newProf.linkedId = prof.linkedId;
-                newProf.linkedType = prof.linkedType;
+                newProf.Load(characterProficiency.proficiencyId);
 
                 characterProficiencies.Add(newProf);
             }

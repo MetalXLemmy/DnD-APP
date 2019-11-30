@@ -8,14 +8,11 @@ using System.Threading.Tasks;
 
 namespace DnD_Manager.Database.DatabaseModels
 {
-    class Proficiency: DatabaseObject
+    class Alignment: DatabaseObject
     {
         public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public int primaryProficiencyId { get; set; }
-        public int linkedId { get; set; }
-        public string category { get; set; }
 
         public override int Insert()
         {
@@ -24,14 +21,11 @@ namespace DnD_Manager.Database.DatabaseModels
                 using (SQLiteCommand objCommand = sqlite.CreateCommand())
                 {
                     sqlite.Open();
-                    objCommand.CommandText = "INSERT INTO Proficiency (name, description, primaryProficiencyId, linkedId, category) VALUES (@name, @description, @primaryProficiencyId, @linkedId, @category)";
+                    objCommand.CommandText = "INSERT INTO Alignment (name, description) VALUES (@name, @description)";
                     objCommand.Prepare();
 
                     objCommand.Parameters.AddWithValue("@name", name);
                     objCommand.Parameters.AddWithValue("@description", description);
-                    objCommand.Parameters.AddWithValue("@totalXp", primaryProficiencyId);
-                    objCommand.Parameters.AddWithValue("@linkedId", linkedId);
-                    objCommand.Parameters.AddWithValue("@category", category);
                     int result = objCommand.ExecuteNonQuery();
                     sqlite.Close();
                     return result;
@@ -46,7 +40,7 @@ namespace DnD_Manager.Database.DatabaseModels
                 using (SQLiteCommand objCommand = sqlite.CreateCommand())
                 {
                     sqlite.Open();
-                    objCommand.CommandText = "SELECT * FROM Character WHERE id = @id";
+                    objCommand.CommandText = "SELECT * FROM Alignment WHERE id = @id";
                     objCommand.Prepare();
 
                     objCommand.Parameters.AddWithValue("@id", id);
@@ -59,9 +53,6 @@ namespace DnD_Manager.Database.DatabaseModels
                             this.id = Convert.ToInt32(r["id"]);
                             name = r["name"].ToString();
                             description = r["description"].ToString();
-                            primaryProficiencyId = Convert.ToInt32(r["primaryProficiencyId"]);
-                            linkedId = Convert.ToInt32(r["linkedId"]);
-                            category = r["category"].ToString();
                         }
                         sqlite.Close();
                         return true;
