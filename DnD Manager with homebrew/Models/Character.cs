@@ -44,5 +44,14 @@ namespace DnD_Manager.Models
             races = CharacterRace.LoadByCharacterId(id);
             return charLoad;
         }
+        public List<CharacterProficiency> GetPrimarySkills()
+        {
+            return proficiencies.Where(o => o.linkedType == "Skill" && o.primaryProficiencyId == 0).ToList();
+        }
+
+        public int GetModifier(int value)
+        {
+            return value / 2 - 5;
+        }
     }
 }

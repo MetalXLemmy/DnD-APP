@@ -58,15 +58,23 @@
     <Compile Include="CharacterScreen.Designer.cs">
       <DependentUpon>CharacterScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Database\DatabaseModels\CharacterRace.cs" />
+    <Compile Include="Database\DatabaseModels\Race.cs" />
+    <Compile Include="Database\DatabaseModels\Size.cs" />
+    <Compile Include="Database\DatabaseModels\Alignment.cs" />
     <Compile Include="Database\DBConnector.cs" />
     <Compile Include="Database\DatabaseModels\Character.cs" />
     <Compile Include="Database\DatabaseModels\CharacterProficiency.cs" />
     <Compile Include="Database\DatabaseModels\LinkedDatabaseObject.cs" />
     <Compile Include="Database\DatabaseModels\DatabaseObject.cs" />
     <Compile Include="Database\DatabaseModels\Proficiency.cs" />
+    <Compile Include="Models\CharacterRace.cs" />
+    <Compile Include="Models\Race.cs" />
+    <Compile Include="Models\Size.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\ModelObject.cs" />
     <Compile Include="Models\CharacterProficiency.cs" />
+    <Compile Include="Models\Alignment.cs" />
     <Compile Include="Models\Proficiency.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
